@@ -1,23 +1,28 @@
-import pg from "pg";
+import { Sequelize } from "sequelize";
 
-const { Pool } = pg;
-
-const pool = new Pool({
-  connectionString: 'postgresql://neondb_owner:npg_5qAW1czeCwVH@ep-tiny-forest-b47aqlur-pooler.c-6.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require',
-  ssl: {
-    rejectUnauthorized: true,
-  },
-});
+export const sequelize = new Sequelize(
+  "neondb",
+  "neondb_owner",
+  "npg_5qAW1czeCwVH",
+  {
+    host: "ep-tiny-forest-b47aqlur-pooler.c-6.us-east-2.aws.neon.tech",
+    dialect: "postgres",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: true,
+      },
+    },
+    logging: false,
+  }
+);
 
 export const DBconn = async () => {
-  try {
-    const result = await pool.query("SELECT NOW()");
-
-    console.log("Database connected successfully!");
-    console.log("Database time:", result.rows[0].now);
-  } catch (error) {
-    console.error("Database connection failed:", error.message);
-  }
+  return await sequelize.sync({alter:true})
+  .then(() => {
+    console.log("DB Connected Successfully");
+  })
+  .catch((err) => {
+    console.log("Failed to connect to DB",err);
+  })
 };
-
-export default pool;

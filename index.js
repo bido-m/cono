@@ -3,7 +3,7 @@ import { DBconn } from "./src/DB/connection.js";
 
 const app = express();
 
-DBconn();
+await DBconn();
 app.use(express.json());
 
 app.listen(5432, () => {
