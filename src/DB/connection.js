@@ -1,28 +1,24 @@
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize(
-  "neondb",
-  "neondb_owner",
-  "npg_5qAW1czeCwVH",
-  {
-    host: "ep-tiny-forest-b47aqlur-pooler.c-6.us-east-2.aws.neon.tech",
-    dialect: "postgres",
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: true,
-      },
+export const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: true,
     },
-    logging: false,
-  }
-);
+  },
+  logging: console.log,
+});
 
 export const DBconn = async () => {
-  return await sequelize.sync({alter:true})
-  .then(() => {
-    console.log("DB Connected Successfully");
-  })
-  .catch((err) => {
-    console.log("Failed to connect to DB",err);
-  })
+  try {
+    await import("./run.js");
+    await sequelize.authenticate();
+    console.log("DB Authenticated Successfully");
+    await sequelize.sync({ alter: true });
+    console.log("All Tables Created & Synced Successfully");
+  } catch (err) {
+    console.error("Failed to connect or sync DB:", err);
+  }
 };
