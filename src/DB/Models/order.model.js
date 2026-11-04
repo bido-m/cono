@@ -13,10 +13,6 @@ export const orderModel = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
     order_type: {
       type: DataTypes.ENUM("delivery", "pickup"),
       allowNull: false,
@@ -47,14 +43,13 @@ export const orderModel = sequelize.define(
     },
     order_status: {
       type: DataTypes.ENUM(
-        "pending",
         "recieved",
         "in preparation",
         "out for delivery",
         "delivered",
         "cancelled",
       ),
-      defaultValue: "pending",
+      defaultValue: "recieved",
       allowNull: false,
     },
     subtotal: {

@@ -29,9 +29,6 @@ orderModel.belongsTo(branchModel, { foreignKey: "branch_id", as: "branch" });
 deliveryZoneModel.hasMany(orderModel, { foreignKey: "delivery_zone_id", as: "orders" });
 orderModel.belongsTo(deliveryZoneModel, { foreignKey: "delivery_zone_id", as: "deliveryZone" });
 
-userModel.hasMany(orderModel, { foreignKey: "user_id", as: "orders" });
-orderModel.belongsTo(userModel, { foreignKey: "user_id", as: "user" });
-
 categoryModel.hasMany(productModel, { foreignKey: "category_id", as: "products" });
 productModel.belongsTo(categoryModel, { foreignKey: "category_id", as: "category" });
 
