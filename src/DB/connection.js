@@ -16,7 +16,7 @@ export const DBconn = async () => {
   try {
     await sequelize.authenticate();
     console.log("DB Authenticated Successfully");
-    await sequelize.sync({ alter: true,force:true });
+    await sequelize.sync({ alter: true });
     console.log("All Tables Created & Synced Successfully");
   } catch (err) {
     console.error("Failed to connect or sync DB:", err);
