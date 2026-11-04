@@ -12,6 +12,8 @@ import { orderModel } from "./Models/order.model.js";
 import { orderDetailsModel } from "./Models/orderDetails.model.js";
 import { orderDetailAdditionModel } from "./Models/orderDetailAddition.model.js";
 
+export const setupRelation = () => {
+
 branchModel.hasMany(userModel, { foreignKey: "branch_id", as: "users" });
 userModel.belongsTo(branchModel, { foreignKey: "branch_id", as: "branch" });
 
@@ -69,19 +71,5 @@ discountModel.hasMany(orderDetailsModel, { foreignKey: "discount_id", as: "order
 
 orderDetailsModel.hasMany(orderDetailAdditionModel, { foreignKey: "order_detail_id", as: "additions" });
 orderDetailAdditionModel.belongsTo(orderDetailsModel, { foreignKey: "order_detail_id", as: "orderDetail" });
+}
 
-export const models = {
-    branchModel,
-    userModel,
-    categoryModel,
-    deliveryZoneModel,
-    sizeModel,
-    additionModel,
-    productModel,
-    productSizeModel,
-    productAdditionModel,
-    discountModel,
-    orderModel,
-    orderDetailsModel,
-    orderDetailAdditionModel,
-};
