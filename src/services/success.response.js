@@ -11,3 +11,10 @@ export const successLogged =({
 }={})=>{
  res.status(200).json({message:"Logged in Successfully",token})
 }
+
+export const successFetch = ({
+    res,
+    data=undefined
+}={})=>{
+    res.status(200).json({message:"Data fetched Successfully",data})
+}

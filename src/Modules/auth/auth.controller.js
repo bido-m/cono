@@ -23,8 +23,4 @@ const logout = async (req,res,next) => {
     try {} catch (error) {}
 }
 
-const profile = async (req,res,next) => {
-    try {} catch (error) {}
-}
-
-export{ register, login, logout, profile };
+export{ register, login, logout };

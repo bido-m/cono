@@ -34,7 +34,7 @@ export const userModel = sequelize.define(
       allowNull: false,
     },
     role: {
-      type: DataTypes.ENUM("admin", "branch_manager", "staff"),
+      type: DataTypes.ENUM("admin", "branch_manager"),
       allowNull: false,
     },
     is_active: {

@@ -1,6 +1,7 @@
 import { userModel } from "../../DB/Models/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { AppError } from "../../utils/AppError.js";
 
 export const registerService = async (userData) => {
     const {
@@ -19,11 +20,11 @@ export const registerService = async (userData) => {
     });
 
     if (existUser) {
-        throw new Error("User already exist!");
+        throw new AppError(409,"User already exist!");
     }
 
     if (password !== confirmPassword) {
-        throw new Error("Password doesn't match");
+        throw new AppError(400,"Password doesn't match");
     }
 
     const hashedPass = bcrypt.hashSync(password, 12);
@@ -48,7 +49,7 @@ export const loginService = async ({ phone, password }) => {
     });
 
     if (!user) {
-        throw new Error("Invalid login credentials");
+        throw new AppError(401, "Invalid credentials");
     }
 
     const isPasswordMatch = bcrypt.compareSync(
@@ -57,7 +58,7 @@ export const loginService = async ({ phone, password }) => {
     );
 
     if (!isPasswordMatch) {
-        throw new Error("Invalid login credentials");
+        throw new AppError(401, "Invalid credentials");
     }
 
     const token = jwt.sign(
