@@ -13,6 +13,8 @@ await DBconn();
 app.use(express.json());
 
 app.use("/auth",allRouter.authRouter);
+app.use("/branch",allRouter.branchRouter);
+app.use("/delivery",allRouter.deliveryZoneRouter);
 app.use("/user",allRouter.userRouter);
 
 app.use(globalError);

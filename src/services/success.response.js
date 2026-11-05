@@ -18,3 +18,16 @@ export const successFetch = ({
 }={})=>{
     res.status(200).json({message:"Data fetched Successfully",data})
 }
+
+export const successUpdate = ({
+    res,
+    data=undefined
+}={})=>{
+    res.status(200).json({message:"Data updated Successfully",data})
+}
+
+export const successDelete = ({
+    res
+}={})=>{
+    res.status(200).json({message:"Data deleted Successfully"})
+}

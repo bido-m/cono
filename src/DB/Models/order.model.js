@@ -43,13 +43,13 @@ export const orderModel = sequelize.define(
     },
     order_status: {
       type: DataTypes.ENUM(
-        "recieved",
+        "received",
         "in preparation",
         "out for delivery",
         "delivered",
         "cancelled",
       ),
-      defaultValue: "recieved",
+      defaultValue: "received",
       allowNull: false,
     },
     subtotal: {

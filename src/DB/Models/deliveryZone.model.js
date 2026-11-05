@@ -17,10 +17,6 @@ export const deliveryZoneModel = sequelize.define(
       type: DataTypes.STRING(100),
       allowNull: false,
     },
-    address: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
     price: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
