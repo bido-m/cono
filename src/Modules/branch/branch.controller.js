@@ -1,10 +1,10 @@
 import { branchModel } from "../../DB/Models/branch.model.js";
 import { successCreate, successFetch, successUpdate, successDelete } from "../../services/success.response.js";
+import { addService, getOneService, removeService, switchAcceptService, updateService } from "./branch.service.js";
 
 const add = async (req,res,next) => {
     try {
-        const { name, phone, address, map_url } = req.body;
-        const data = await branchModel.create({ name, phone, address, map_url });
+        const data = await addService(req.body);
         successCreate({res,data});
     } catch (error) {
         return next(error);
@@ -23,7 +23,7 @@ const getAll = async (req,res,next) => {
 const getOne = async (req,res,next) => {
     try {
         const { id } = req.params;
-        const data = await branchModel.findByPk(id);
+        const data = await getOneService(id);
         successFetch({res,data});
     } catch (error) {
         return next(error);
@@ -33,8 +33,7 @@ const getOne = async (req,res,next) => {
 const update = async (req,res,next) => {
     try {
         const { id } = req.params;
-        const { name, phone, address, map_url } = req.body;
-        const data = await branchModel.update({ name, phone, address, map_url },{where:{id},returning: true});
+        const data = await updateService({id,branchData:req.body});
         successUpdate({res,data});
     } catch (error) {
         return next(error);
@@ -44,7 +43,7 @@ const update = async (req,res,next) => {
 const remove = async (req,res,next) => {
     try {
         const { id } = req.params;
-        await branchModel.destroy({where:{id}});
+        await removeService(id);
         successDelete({res});
     } catch (error) {
         return next(error);
@@ -54,15 +53,8 @@ const remove = async (req,res,next) => {
 const switchAccept = async (req,res,next) => {
     try {
         const { id } = req.params;
-        const data = await branchModel.findByPk(id);
-        if(data.accept_order == true){
-            data.accept_order = false;
-            await data.save();
-        }else{
-            data.accept_order = true;
-            await data.save();
-        }
-        successUpdate({res,data:{accept_order:data.accept_order}});
+        const data = await switchAcceptService(id);
+        successUpdate({res,data});
     } catch (error) {
         return next(error);
     }
