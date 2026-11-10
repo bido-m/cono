@@ -18,7 +18,6 @@ export const addService = async (deliveryZoneData) => {
 
 export const getOneService = async (id) => {
     const data = await deliveryZoneModel.findByPk(id,{
-        attributes: { exclude: ["branch_id"] },
         include:[{
             model:branchModel,
             as:"branch",

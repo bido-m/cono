@@ -15,7 +15,6 @@ const add = async (req,res,next) => {
 const getAll = async (req,res,next) => {
     try {
         const data = await deliveryZoneModel.findAndCountAll({
-            attributes: { exclude: ["branch_id"] },
             include:[{
                 model:branchModel,
                 as:"branch",
