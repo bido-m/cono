@@ -1,0 +1,19 @@
+meta {
+  name: Update Product Size
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/product-size/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "product_id": 1,
+    "size_id": 1,
+    "price": 135
+  }
+}

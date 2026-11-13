@@ -19,7 +19,7 @@ export const globalError = (err, req, res, next) => {
             return Forbidden({ res, err: err.message });
 
         case 404:
-            return notFound({ res });
+            return notFound({ res, message:err.message });
 
         case 409:
             return conflict({ res, message: err.message });

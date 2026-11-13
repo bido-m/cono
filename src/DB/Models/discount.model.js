@@ -9,9 +9,13 @@ export const discountModel = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    name: {
+      type: DataTypes.STRING(55),
+      allowNull:false
+    },
     category_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
     },
     product_id: {
       type: DataTypes.INTEGER,

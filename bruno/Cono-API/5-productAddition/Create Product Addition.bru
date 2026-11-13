@@ -1,0 +1,19 @@
+meta {
+  name: Create Product Addition
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/product-addition
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "product_id": 1,
+    "addition_id": 1,
+    "price": 15
+  }
+}

@@ -14,6 +14,10 @@ export const sizeModel = sequelize.define(
       allowNull: false,
       unique: true,
     },
+    is_available: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
   },
   {
     timestamps: true,

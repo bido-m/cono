@@ -1,0 +1,19 @@
+meta {
+  name: Update Product Addition
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/product-addition/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "product_id": 1,
+    "addition_id": 1,
+    "price": 20
+  }
+}

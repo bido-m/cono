@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Cono API - Management Modules",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

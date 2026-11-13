@@ -1,0 +1,21 @@
+meta {
+  name: Update Product
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/product/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "category_id": 1,
+    "product_name": "دبل كلاسيك تشيز برجر",
+    "description": "شريحتين لحم بقري صافي مع دبل جبنة شيدر وصوص خاص",
+    "image_url": "https://example.com/images/burger-double.jpg",
+    "is_available": true
+  }
+}
