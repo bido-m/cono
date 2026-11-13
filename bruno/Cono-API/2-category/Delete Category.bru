@@ -5,7 +5,11 @@ meta {
 }
 
 delete {
-  url: {{baseUrl}}/category/1
+  url: {{baseUrl}}/category/1?x={{x}}
   body: none
   auth: none
+}
+
+params:query {
+  x: {{x}}
 }

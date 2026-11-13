@@ -25,7 +25,7 @@ export const createDiscountSchema = {
       "number.base": "معرّف الصنف يجب أن يكون رقماً",
     }),
 
-    product_id: Joi.number().integer().positive().messages({
+    product_id: Joi.number().allow(null).integer().positive().messages({
       "number.base": "معرّف المنتج يجب أن يكون رقماً",
     }),
 

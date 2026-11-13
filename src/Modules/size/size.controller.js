@@ -34,7 +34,7 @@ const updateSize = async (req, res, next) => {
   try {
     const { id } = req.params;
     const data = await sizeService.updateSize(id, req.body);
-    successUpdate({ res, body });
+    successUpdate({ res, data });
   } catch (error) {
     next(error);
   }

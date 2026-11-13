@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/category
+  url: {{baseUrl}}/category?x={{x}}
   body: none
   auth: none
+}
+
+params:query {
+  x: {{x}}
 }
